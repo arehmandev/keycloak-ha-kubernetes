@@ -15,6 +15,13 @@ spec:
           image: solsson/keycloak-ha-postgres:2.3.0.Final
           ports:
             - containerPort: 8080
+            - containerPort: 7600
+            - containerPort: 57600
+            - containerPort: 55200
+            - containerPort: 45688
+            - containerPort: 54200
+            - containerPort: 4712
+            - containerPort: 4713
           env:
             - name: POSTGRES_DATABASE
               value: keycloak
