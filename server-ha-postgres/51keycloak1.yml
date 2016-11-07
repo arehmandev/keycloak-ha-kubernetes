@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
         - name: keycoak
-          image: jboss/keycloak-ha-postgres:2.3.0.Final
+          image: solsson/keycloak-ha-postgres:2.3.0.Final
           ports:
             - containerPort: 8080
           env:
