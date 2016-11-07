@@ -1,0 +1,31 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: keycloak-0
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: keycloak
+        petindex: "0"
+    spec:
+      containers:
+        - name: keycoak
+          image: jboss/keycloak-ha-postgres:2.3.0.Final
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_DATABASE
+              value: keycloak
+            - name: POSTGRES_USER
+              value: keycloak
+            - name: POSTGRES_PASSWORD
+              value: keycloak
+            - name: POSTGRES_ROOT_PASSWORD
+              value: password
+            # first start only, testing only
+            - name: KEYCLOAK_USER
+              value: admin
+            - name: KEYCLOAK_PASSWORD
+              value: test
