@@ -7,4 +7,10 @@ spec:
     app: keycloak
     petindex: "1"
   ports:
-    - port: 8080
+    - port: 7600
+    - port: 57600
+    - port: 55200
+    - port: 45688
+    - port: 54200
+    - port: 4712
+    - port: 4713
