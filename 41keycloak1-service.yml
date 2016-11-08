@@ -7,10 +7,27 @@ spec:
     app: keycloak
     petindex: "1"
   ports:
-    - port: 7600
-    - port: 57600
-    - port: 55200
-    - port: 45688
-    - port: 54200
-    - port: 4712
-    - port: 4713
+    - name: jgroups-mping
+      port: 45700
+    - name: jgroups-tcp
+      port: 7600
+    - name: jgroups-tcp-fd
+      port: 57600
+    - name: jgroups-udp
+      port: 55200
+      protocol: UDP
+    - name: jgroups-udp-multicast
+      port: 45688
+      protocol: UDP
+    - name: jgroups-udp-fd
+      port: 54200
+      protocol: UDP
+    - name: modcluster
+      port: 23364
+    - name: modcluster-udp
+      port: 23364
+      protocol: UDP
+    - name: txn-recovery-environment
+      port: 4712
+    - name: txn-status-manager
+      port: 4713
