@@ -20,6 +20,14 @@ Start two or more Keycloak instances that form a cluster and connect to the Post
     docker run --name keycloak2 --link postgres:postgres -e POSTGRES_DATABASE=keycloak -e POSTGRES_USER=keycloak -e POSTGRES_PASSWORD=password jboss/keycloak-ha-postgres
     docker logs -f keycloak2
 
+### testing
+
+Start a linked container with a shell and try curl:
+
+    docker run --rm --link keycloak:keycloak -ti debian:jessie /bin/bash
+    # apt-get update && apt-get install -y curl
+    # curl http://keycloak:8080/
+    # curl http://keycloak:/
 
 ## Other details
 
