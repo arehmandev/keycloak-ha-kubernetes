@@ -41,7 +41,7 @@ spec:
           args:
             - -b
             - 0.0.0.0
-            #- -Djboss.bind.address.private=0.0.0.0
+            - -Djboss.bind.address.private=0.0.0.0
             - --server-config
             - standalone-ha.xml
             - -Djboss.host.name=keycloak-0
