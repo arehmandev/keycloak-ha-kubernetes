@@ -39,12 +39,12 @@ spec:
             - name: KEYCLOAK_PASSWORD
               value: test
           args:
-            - -b
-            - 0.0.0.0
-            - -Djboss.bind.address.private=0.0.0.0
-            - --server-config
-            - standalone-ha.xml
+            - -b=0.0.0.0
+            - -bmanagement=0.0.0.0
+            #- -bprivate=0.0.0.0
+            - --server-config=standalone-ha.xml
             - -Djboss.host.name=keycloak-0
             - -Djboss.node.name=keycloak-0
             - -Djboss.qualified.host.name=keycloak-0
             - -Djboss.server.name=keycloak-0
+            - -Dtest.instance.address="$(KEYCLOAK_0_SERVICE_HOST)"

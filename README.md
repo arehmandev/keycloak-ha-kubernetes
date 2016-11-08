@@ -37,3 +37,24 @@ How can we make keycloak fail after a timeout if cluster size is <N nodes?
 
 Can we simplify discovery if we know the number of nodes and have an env var with the IP of nodes?
 https://kb.novaordis.com/index.php/WildFly_Clustering_without_Multicast
+
+Can we bind to all interfaces using `-bprivate=0.0.0.0`? Then set bind_address to the service's address in TCP?
+http://jgroups.1086181.n5.nabble.com/JGroups-TCP-over-WAN-td3533.html
+
+Is it possible to remove the validation in JGoups:
+```
+WARN  [org.jboss.as.clustering.jgroups] (MSC service thread 1-1) WFLYCLJG0006: property bind_addr for protocol org.jgroups.protocols.TCP attempting to override socket binding value 0.0.0.0 : property value 10.0.0.170 will be ignored
+
+ERROR [org.jboss.msc.service.fail] (MSC service thread 1-1) MSC000001: Failed to start service jboss.jgroups.channel.ee: org.jboss.msc.service.StartException in service jboss.jgroups.channel.ee: java.security.PrivilegedActionException: java.net.BindException: [TCP] /0.0.0.0 is not a valid address on any local network interface
+	at org.wildfly.clustering.jgroups.spi.service.ChannelBuilder.start(ChannelBuilder.java:80)
+Caused by: java.security.PrivilegedActionException: java.net.BindException: [TCP] /0.0.0.0 is not a valid address on any local network interface
+	at org.wildfly.security.manager.WildFlySecurityManager.doChecked(WildFlySecurityManager.java:640)
+Caused by: java.net.BindException: [TCP] /0.0.0.0 is not a valid address on any local network interface
+	at org.jgroups.util.Util.checkIfValidAddress(Util.java:3522)
+	at org.jgroups.stack.Configurator.ensureValidBindAddresses(Configurator.java:903)
+	at org.jgroups.stack.Configurator.setupProtocolStack(Configurator.java:118)
+```
+
+Trying to sort things out through mailing list threads:
+http://lists.jboss.org/pipermail/keycloak-user/2016-November/thread.html#8267
+https://sourceforge.net/p/javagroups/mailman/javagroups-users/ (first message for Nov 2016)
