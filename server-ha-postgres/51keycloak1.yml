@@ -31,3 +31,9 @@ spec:
               value: keycloak
             - name: POSTGRES_ROOT_PASSWORD
               value: password
+          # if we don't need the user add feature we can bypass docker-entrypoint
+          entrypoint:
+            - /opt/jboss/keycloak/bin/standalone.sh
+          arguments:
+            - -Djboss.bind.address=0.0.0.0
+            - -Djboss.bind.address.private=0.0.0.0

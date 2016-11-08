@@ -36,3 +36,6 @@ spec:
               value: admin
             - name: KEYCLOAK_PASSWORD
               value: test
+          arguments:
+            - -Djboss.bind.address=0.0.0.0
+            - -Djboss.bind.address.private=0.0.0.0
