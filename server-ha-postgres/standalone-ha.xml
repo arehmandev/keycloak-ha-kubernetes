@@ -342,7 +342,7 @@
                 </stack>-->
                 <stack name="tcp">
                     <transport type="TCP" socket-binding="jgroups-tcp">
-                      <property name="bind_addr">${env.KEYCLOAK_0_SERVICE_HOST}</property>
+                      <property name="bind_addr">${cluster.instance.service.address}</property>
                     </transport>
                     <protocol type="MPING" socket-binding="jgroups-mping"/>
                     <protocol type="MERGE3"/>

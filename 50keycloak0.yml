@@ -47,4 +47,4 @@ spec:
             - -Djboss.node.name=keycloak-0
             - -Djboss.qualified.host.name=keycloak-0
             - -Djboss.server.name=keycloak-0
-            - -Dtest.instance.address="$(KEYCLOAK_0_SERVICE_HOST)"
+            - -Dcluster.instance.service.address="$(KEYCLOAK_0_SERVICE_HOST)"
