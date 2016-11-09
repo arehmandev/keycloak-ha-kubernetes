@@ -1,0 +1,44 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: keycloak-1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: keycloak
+        petindex: "1"
+    spec:
+      containers:
+        - name: keycoak
+          image: solsson/keycloak-ha-postgres:2.3.0.Final
+          ports:
+            - containerPort: 8080
+            - containerPort: 45700
+            - containerPort: 7600
+            - containerPort: 57600
+            - containerPort: 55200
+            - containerPort: 45688
+            - containerPort: 54200
+            - containerPort: 23364
+            - containerPort: 4712
+            - containerPort: 4713
+          env:
+            - name: POSTGRES_DATABASE
+              value: keycloak
+            - name: POSTGRES_USER
+              value: keycloak
+            - name: POSTGRES_PASSWORD
+              value: keycloak
+            - name: POSTGRES_ROOT_PASSWORD
+              value: password
+          args:
+            - -b=0.0.0.0
+            - -bmanagement=0.0.0.0
+            - --server-config=standalone-ha.xml
+            - -Djboss.host.name=keycloak-1
+            - -Djboss.node.name=keycloak-1
+            - -Djboss.qualified.host.name=keycloak-1
+            - -Djboss.server.name=keycloak-1
+            - -Dcluster.instance.service.address="$(KEYCLOAK_1_SERVICE_HOST)"
