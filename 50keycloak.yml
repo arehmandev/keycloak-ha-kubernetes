@@ -9,38 +9,51 @@ spec:
       labels:
         app: keycloak
     spec:
+      hostNetwork: true
       containers:
         - name: keycoak
           image: solsson/keycloak-ha-postgres:2.3.0.Final
           ports:
             - name: http
               containerPort: 8080
+              hostPort: 8080
             - name: management
               containerPort: 9090
+              hostPort: 9090
             - name: jgroups-mping
               containerPort: 45700
+              hostPort: 45700
             - name: jgroups-tcp
               containerPort: 7600
+              hostPort: 7600
             - name: jgroups-tcp-fd
               containerPort: 57600
+              hostPort: 57600
             - name: jgroups-udp
               containerPort: 55200
+              hostPort: 55200
               protocol: UDP
             - name: jgroups-udp-mc
               containerPort: 45688
+              hostPort: 45688
               protocol: UDP
             - name: jgroups-udp-fd
               containerPort: 54200
+              hostPort: 54200
               protocol: UDP
             - name: modcluster
               containerPort: 23364
+              hostPort: 23364
             - name: modcluster-udp
               containerPort: 23364
+              hostPort: 23364
               protocol: UDP
             - name: txn-recover-env
               containerPort: 4712
+              hostPort: 4712
             - name: txn-status-mgr
               containerPort: 4713
+              hostPort: 4713
           env:
             - name: POSTGRES_DATABASE
               value: keycloak
