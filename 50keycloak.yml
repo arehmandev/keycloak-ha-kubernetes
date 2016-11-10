@@ -24,7 +24,7 @@ spec:
             - name: jgroups-udp
               containerPort: 55200
               protocol: UDP
-            - name: jgroups-udp-multicast
+            - name: jgroups-udp-mc
               containerPort: 45688
               protocol: UDP
             - name: jgroups-udp-fd
@@ -35,9 +35,9 @@ spec:
             - name: modcluster-udp
               containerPort: 23364
               protocol: UDP
-            - name: txn-recovery-environment
+            - name: txn-recover-env
               containerPort: 4712
-            - name: txn-status-manager
+            - name: txn-status-mgr
               containerPort: 4713
           env:
             - name: POSTGRES_DATABASE
