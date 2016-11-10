@@ -1,14 +1,13 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: keycloak-0
+  name: keycloak
 spec:
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
         app: keycloak
-        petindex: "0"
     spec:
       containers:
         - name: keycoak
@@ -42,8 +41,3 @@ spec:
             - -b=0.0.0.0
             - -bmanagement=0.0.0.0
             - --server-config=standalone-ha.xml
-            - -Djboss.host.name=keycloak-0
-            - -Djboss.node.name=keycloak-0
-            - -Djboss.qualified.host.name=keycloak-0
-            - -Djboss.server.name=keycloak-0
-            - -Dcluster.instance.service.address="$(KEYCLOAK_0_SERVICE_HOST)"
